@@ -20,7 +20,9 @@ public class StreamAPI {
         //sortedDemo();
         //forEachDemo();
         reduceDemo();
+        
     }
+    
 
     public static void mapDemo() {
         
