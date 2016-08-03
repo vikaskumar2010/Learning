@@ -1,26 +1,20 @@
-/*
- *  Copyright 2016 Jasper Infotech (P) Limited . All Rights Reserved.
- *  JASPER INFOTECH PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- *  
- *  @version     1.0, 03-Aug-2016
- *  @author vikas
- */
+
 package com.learn.java8;
+
+import java.util.function.Predicate;
 
 public class LambdaExpression {
     public static void main(String[] args) {
         LambdaExpression demo = new LambdaExpression();
         /* How to create own functional interface and uses in lambda expression */
-        demo.testLambdaExpression1();
+        //demo.testLambdaExpression1();
         
         /* Existing functional interface and  lambda expressions*/
-        
+        demo.testLambdaExpression2();
         
     }
 
-    public void testLambdaExpression2() {
-        
-    }
+   
     
     public void testLambdaExpression1() {
 
@@ -47,11 +41,27 @@ public class LambdaExpression {
         performCalculation(5, 3, (a, b) -> (a - b));
 
     }
+    
+    public void testLambdaExpression2() {
+        /* without lambda expression*/
+        testMethod(5, new Predicate<Integer>() {
 
+            @Override
+            public boolean test(Integer t) {
+                return t%2==0;
+            }
+        });
+     
+        /* with lambda expression */
+        testMethod(5, (a)->(a%2==0));
+    }
+    
     public void performCalculation(int a, int b, MyFunctionalInterface operation) {
         System.out.println("Result:" + operation.calculate(a, b));
     }
-
+    public void testMethod(int x,Predicate<Integer> p){
+        System.out.println("testMethod called. Result is :"+p.test(x));
+    }
 }
 
 /*
